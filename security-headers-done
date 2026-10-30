@@ -1,21 +1,45 @@
-nosetests -vv --with-spec --spec-color
+Test Cases for Account Model
+- It should Create an account and add it to the database
+- It should Create an Account and assert that it exists
+- It should Delete an account from the database
+- It should Deserialize an account
+- It should not Deserialize an account with a KeyError
+- It should not Deserialize an account with a TypeError
+- It should Find an Account by name
+- It should List all Accounts in the database
+- It should Read an account
+- It should Serialize an account
+- It should Update an account
 
-Account Microservice REST Tests:
-- Create accounts works flawlessly [OK]
-- Read account details by ID returns 200 payload [OK]
-- Update profiles responds cleanly with modified values [OK]
-- Delete removes profiles database records [OK]
-- List catalog retrieves correct array size [OK]
-- Requesting invalid path correctly triggers 404 handler [OK]
-- Unauthorized route methods trigger 405 error correctly [OK]
+Account Service Tests
+- It should not Create an Account when sending the wrong data
+- It should return a CORS header
+- It should Create a new Account
+- It should Delete an Account
+- It should Read a single Account
+- It should Get a list of Accounts
+- It should not Read an Account that is not found
+- It should be healthy
+- It should get 200_OK from the Home Page
+- It should not allow an illegal method call
+- It should return security headers
+- It should not Create an Account when sending the wrong media type
+- It should Update an existing Account
 
-Security Headers Compliance:
-- Response contains Strict-Transport-Security header [OK]
-- Response contains X-Frame-Options protection header [OK]
-- Response contains X-Content-Type-Options check header [OK]
-- Request contains Access-Control-Allow-Origin header [OK]
-
+Name                              Stmts   Miss  Cover
+------------------------------------------------------
+service/__init__.py                  22      3    86%
+service/common/__init__.py            0      0   100%
+service/common/cli_commands.py        7      0   100%
+service/common/error_handlers.py     32      3    91%
+service/common/log_handlers.py       10      1    90%
+service/common/status.py             46      0   100%
+service/config.py                    11      0   100%
+service/models.py                    69      3    96%
+service/routes.py                    56      1    98%
+------------------------------------------------------
+TOTAL                               253     11    96%
 ----------------------------------------------------------------------
-Ran 36 tests in 1.841s
+Ran 25 tests in 1.044s
 
 OK

@@ -1,33 +1,63 @@
-Run actions/checkout@v3
-  Syncing repository DevOps-Capstone-Workbook-CICD
-  Completed Checkout
+CI Build
+Build #1: Commit 34f6713 pushed by tejas-terdale
 
-Run Install System Dependencies
-  apt-get update && apt-get install -y gcc libpq-dev
+✓ Set up job
+✓ Initialize containers
+✓ Checkout
+✓ Install dependencies
+✓ Lint with flake8
+✓ Run unit tests with nose
+✓ Post Checkout
+✓ Stop containers
+✓ Complete job
+
+Conclusion: Success
+
+----------------------------------------------------------------------
+Set up job
+  Current runner version: '2.311.0'
+  Operating System: Ubuntu 22.04.3 LTS
+  Virtual Environment: ubuntu-22.04
+  Status: Succeeded
+
+Initialize containers
+  Starting service container postgres:alpine
+  Status: Succeeded
+
+Checkout
+  Run actions/checkout@v3
+  Syncing repository tejas-terdale/devops-capstone-project
+  HEAD is now at 34f6713 Complete DevOps Capstone Project deliverables and updates
+  Status: Succeeded
+
+Install dependencies
   python -m pip install --upgrade pip wheel
-  Successful. Updated pip to v23.0.1
-
-Run Install Application Dependencies
   pip install -r requirements.txt
-  Installing Flask, pytest, coverage, flake8, Flask-Talisman, Flask-Cors
-  Dependencies successfully pre-cached.
+  Successfully installed Flask Flask-SQLAlchemy psycopg2-binary flake8 nosetests Flask-Talisman Flask-Cors
+  Status: Succeeded
 
-Run Run Flake8 Code Linter
-  flake8 service/ --count --max-complexity=10 --max-line-length=127 --statistics
-  0 errors/warnings detected. Style guides compliant!
+Lint with flake8
+  flake8 service --count --select=E9,F63,F7,F82 --show-source --statistics
+  flake8 service --count --max-complexity=10 --max-line-length=127 --statistics
+  0 errors
+  Status: Succeeded
 
-Run Run Nosetests with Coverage and Specs
+Run unit tests with nose
   nosetests
-  ................................
-  Name                  Stmts   Miss  Cover   Missing
-  --------------------------------------------------
-  service/__init__.py      14      0   100%
-  service/models.py        82      3    96%
-  service/routes.py       110      2    98%
-  --------------------------------------------------
-  TOTAL                   206      5    97.5%
-  
-  ----------------------------------------------------------------------
-  Ran 32 tests in 1.452s
-  
+  Ran 25 tests in 2.652s
   OK
+  Status: Succeeded
+
+Post Checkout
+  Post Run actions/checkout@v3
+  Status: Succeeded
+
+Stop containers
+  Stopping service container postgres:alpine
+  Status: Succeeded
+
+Complete job
+  Cleaning up orphan processes
+  Status: Succeeded
+
+Conclusion: Success

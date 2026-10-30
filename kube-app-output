@@ -1,12 +1,4 @@
 {
-  "name": "Customer Accounts Service",
-  "version": "1.0.0",
-  "status": "healthy",
-  "database": "connected",
-  "environment": "production-kubernetes",
-  "features": {
-    "talisman_security": true,
-    "cors_cross_origin": true,
-    "replica_count": 3
-  }
+  "name": "Account REST API Service",
+  "version": "1.0"
 }
