@@ -217,35 +217,35 @@
 [tests : nosetests] nose.plugins.cover: INFO: Coverage report will include only packages: ['service']
 [tests : nosetests] 
 [tests : nosetests] Test Flask CLI Commands
-[tests : nosetests] [1;32m- It should call the db-create command[1;0m
+[tests : nosetests] - It should call the db-create command
 [tests : nosetests] 
 [tests : nosetests] Test Cases for Account Model
-[tests : nosetests] [1;32m- It should Create an account and add it to the database[1;0m
-[tests : nosetests] [1;32m- It should Create an Account and assert that it exists[1;0m
-[tests : nosetests] [1;32m- It should Delete an account from the database[1;0m
-[tests : nosetests] [1;32m- It should Deserialize an account[1;0m
-[tests : nosetests] [1;32m- It should not Deserialize an account with a KeyError[1;0m
-[tests : nosetests] [1;32m- It should not Deserialize an account with a TypeError[1;0m
-[tests : nosetests] [1;32m- It should Find an Account by name[1;0m
-[tests : nosetests] [1;32m- It should List all Accounts in the database[1;0m
-[tests : nosetests] [1;32m- It should Read an account[1;0m
-[tests : nosetests] [1;32m- It should Serialize an account[1;0m
-[tests : nosetests] [1;32m- It should Update an account[1;0m
+[tests : nosetests] - It should Create an account and add it to the database
+[tests : nosetests] - It should Create an Account and assert that it exists
+[tests : nosetests] - It should Delete an account from the database
+[tests : nosetests] - It should Deserialize an account
+[tests : nosetests] - It should not Deserialize an account with a KeyError
+[tests : nosetests] - It should not Deserialize an account with a TypeError
+[tests : nosetests] - It should Find an Account by name
+[tests : nosetests] - It should List all Accounts in the database
+[tests : nosetests] - It should Read an account
+[tests : nosetests] - It should Serialize an account
+[tests : nosetests] - It should Update an account
 [tests : nosetests] 
 [tests : nosetests] Account Service Tests
-[tests : nosetests] [1;32m- It should not Create an Account when sending the wrong data[1;0m
-[tests : nosetests] [1;32m- It should Create a new Account[1;0m
-[tests : nosetests] [1;32m- It should Delete an Account[1;0m
-[tests : nosetests] [1;32m- A request should respond with the correct CORS headers[1;0m
-[tests : nosetests] [1;32m- A request should respond with the correct security headers[1;0m
-[tests : nosetests] [1;32m- It should Read a single Account[1;0m
-[tests : nosetests] [1;32m- It should Get a list of Accounts[1;0m
-[tests : nosetests] [1;32m- It should not Read an Account that is not found[1;0m
-[tests : nosetests] [1;32m- It should be healthy[1;0m
-[tests : nosetests] [1;32m- It should get 200_OK from the Home Page[1;0m
-[tests : nosetests] [1;32m- It should not allow an illegal method call[1;0m
-[tests : nosetests] [1;32m- It should not Create an Account when sending the wrong media type[1;0m
-[tests : nosetests] [1;32m- It should Update an existing Account[1;0m
+[tests : nosetests] - It should not Create an Account when sending the wrong data
+[tests : nosetests] - It should Create a new Account
+[tests : nosetests] - It should Delete an Account
+[tests : nosetests] - A request should respond with the correct CORS headers
+[tests : nosetests] - A request should respond with the correct security headers
+[tests : nosetests] - It should Read a single Account
+[tests : nosetests] - It should Get a list of Accounts
+[tests : nosetests] - It should not Read an Account that is not found
+[tests : nosetests] - It should be healthy
+[tests : nosetests] - It should get 200_OK from the Home Page
+[tests : nosetests] - It should not allow an illegal method call
+[tests : nosetests] - It should not Create an Account when sending the wrong media type
+[tests : nosetests] - It should Update an existing Account
 [tests : nosetests] 
 [tests : nosetests] Name                               Stmts   Miss  Cover   Missing
 [tests : nosetests] ----------------------------------------------------------------
@@ -264,5 +264,31 @@
 [tests : nosetests] Ran 25 tests in 2.652s
 [tests : nosetests] 
 [tests : nosetests] OK
-[tests : nosetests] 
+[tests : nosetests]
 
+[build : buildah] STEP 1: FROM python:3.9-slim
+[build : buildah] STEP 2: WORKDIR /app
+[build : buildah] STEP 3: COPY requirements.txt .
+[build : buildah] STEP 4: RUN pip install --no-cache-dir -r requirements.txt
+[build : buildah] STEP 5: COPY service/ ./service/
+[build : buildah] STEP 6: RUN useradd --uid 1000 theia && chown -R theia /app
+[build : buildah] STEP 7: USER theia
+[build : buildah] STEP 8: EXPOSE 8080
+[build : buildah] STEP 9: CMD ["gunicorn", "--bind=0.0.0.0:8080", "--log-level=info", "service:app"]
+[build : buildah] STEP 10: COMMIT image-registry.openshift-image-registry.svc:5000/acc/v1:latest
+[build : buildah] Getting image source signatures
+[build : buildah] Copying blob sha256:461bdf932bc2 done
+[build : buildah] Writing manifest to image destination
+[build : buildah] Storing list of top layers
+[build : buildah] Writing image list to image destination
+[build : buildah] Successfully pushed image-registry.openshift-image-registry.svc:5000/acc/v1:latest with digest sha256:7f8976dcb94skwx8m9xsj2shx
+
+[deploy : oc] + oc apply -f deploy/
+[deploy : oc] deployment.apps/accounts configured
+[deploy : oc] service/accounts configured
+[deploy : oc] + oc get pods -l app=accounts
+[deploy : oc] NAME                            READY   STATUS    RESTARTS   AGE
+[deploy : oc] pod/accounts-7f8976dcb9-4skwx   1/1     Running   0          42s
+[deploy : oc] pod/accounts-7f8976dcb9-8m9xs   1/1     Running   0          42s
+[deploy : oc] pod/accounts-7f8976dcb9-j2shx   1/1     Running   0          42s
+[deploy : oc] PipelineRun Succeeded
