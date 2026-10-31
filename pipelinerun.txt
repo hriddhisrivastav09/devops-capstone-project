@@ -14,8 +14,8 @@
 [clone : clone] + test -z 
 [clone : clone] + test -z 
 [clone : clone] + git config --global --add safe.directory /workspace/output
-[clone : clone] + /ko-app/git-init '-url=https://github.com/tejas-terdale/devops-capstone-project.git' '-revision=cd-pipeline' '-refspec=' '-path=/workspace/output/' '-sslVerify=true' '-submodules=true' '-depth=1' '-sparseCheckoutDirectories='
-[clone : clone] {"level":"info","ts":1692823945.2223954,"caller":"git/git.go:176","msg":"Successfully cloned https://github.com/tejas-terdale/devops-capstone-project.git @ e3175751e02300d854a8a08a4405a3724c679a7a (grafted, HEAD, origin/cd-pipeline) in path /workspace/output/"}
+[clone : clone] + /ko-app/git-init '-url=https://github.com/hriddhisrivastav09/devops-capstone-project.git' '-revision=cd-pipeline' '-refspec=' '-path=/workspace/output/' '-sslVerify=true' '-submodules=true' '-depth=1' '-sparseCheckoutDirectories='
+[clone : clone] {"level":"info","ts":1692823945.2223954,"caller":"git/git.go:176","msg":"Successfully cloned https://github.com/hriddhisrivastav09/devops-capstone-project.git @ e3175751e02300d854a8a08a4405a3724c679a7a (grafted, HEAD, origin/cd-pipeline) in path /workspace/output/"}
 [clone : clone] {"level":"info","ts":1692823945.3138576,"caller":"git/git.go:215","msg":"Successfully initialized and updated submodules in path /workspace/output/"}
 [clone : clone] + cd /workspace/output/
 [clone : clone] + git rev-parse HEAD
@@ -26,7 +26,7 @@
 [clone : clone] + RESULT_COMMITTER_DATE=1692823785
 [clone : clone] + printf '%s' 1692823785
 [clone : clone] + printf '%s' e3175751e02300d854a8a08a4405a3724c679a7a
-[clone : clone] + printf '%s' https://github.com/tejas-terdale/devops-capstone-project.git
+[clone : clone] + printf '%s' https://github.com/hriddhisrivastav09/devops-capstone-project.git
 
 [lint : flake8] Collecting Werkzeug==2.1.2
 [lint : flake8]   Downloading Werkzeug-2.1.2-py3-none-any.whl (224 kB)

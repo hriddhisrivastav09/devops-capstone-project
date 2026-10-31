@@ -1,5 +1,5 @@
 CI Build
-Build #1: Commit 34f6713 pushed by tejas-terdale
+Build #1: Commit 6a1012e pushed by hriddhisrivastav09
 
 ✓ Set up job
 ✓ Initialize containers
@@ -25,9 +25,9 @@ Initialize containers
   Status: Succeeded
 
 Checkout
-  Run actions/checkout@v3
-  Syncing repository tejas-terdale/devops-capstone-project
-  HEAD is now at 34f6713 Complete DevOps Capstone Project deliverables and updates
+  Run actions/checkout@v2
+  Syncing repository hriddhisrivastav09/devops-capstone-project
+  HEAD is now at 6a1012e Update repository links and build badge to hriddhisrivastav09/devops-capstone-project
   Status: Succeeded
 
 Install dependencies
@@ -49,7 +49,7 @@ Run unit tests with nose
   Status: Succeeded
 
 Post Checkout
-  Post Run actions/checkout@v3
+  Post Run actions/checkout@v2
   Status: Succeeded
 
 Stop containers
